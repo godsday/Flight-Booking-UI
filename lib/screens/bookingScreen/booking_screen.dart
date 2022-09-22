@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thiranuitest/constants/color_constants.dart';
+import 'package:thiranuitest/screens/flightSearchScreen/flight_search_screen.dart';
 import 'package:thiranuitest/screens/helperWidgets/tabviewCustom.dart';
 import 'package:thiranuitest/widgets/textCustom_widgets.dart';
 import 'bottom_price_container.dart';
@@ -48,13 +49,21 @@ class BookingScreen extends StatelessWidget {
                       textColor: Colors.white,
                     ),
                   ),
-
-                  // const Positioned(
-                  //   top: 40,
-                  //   right: 25,
-                  //   child:
-                  //   CircleAvatar(backgroundImage: AssetImage("assetName"),)
-                  //   ),
+                  Positioned(
+                      top: 40,
+                      right: 25,
+                      child: CircleAvatar(
+                        backgroundColor: primaryColor,
+                        child: IconButton(
+                            icon: const Icon(Icons.search),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FlightSearchScreen()));
+                            }),
+                      )),
                   Positioned(
                     top: 80,
                     left: 25,
@@ -68,12 +77,14 @@ class BookingScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  //    const Positioned(
-                  //      top: 80,
-                  //  left: 45,
-                  //  child:  Image(image: AssetImage("")),
-                  //  ),
-
+                  const Positioned(
+                    top: 83,
+                    left: 97,
+                    child: Icon(
+                      Icons.flight,
+                      color: Colors.cyan,
+                    ),
+                  ),
                   Positioned(
                     bottom: 20,
                     left: 22,
@@ -124,7 +135,7 @@ class BookingScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-             const BottomPriceContainer()
+              const BottomPriceContainer()
             ],
           ),
         ),
@@ -132,4 +143,3 @@ class BookingScreen extends StatelessWidget {
     );
   }
 }
-

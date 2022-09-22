@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thiranuitest/screens/checkoutScreen/checkout_screen.dart';
 
 import '../../constants/color_constants.dart';
 import '../../widgets/textCustom_widgets.dart';
@@ -88,7 +89,7 @@ class BottomPriceContainer extends StatelessWidget {
                 Row(
                   children: const[
                     Icon(
-                      Icons.replay_outlined,
+                      Icons.update,
                       color: Colors.blue,
                     ),
                     TextCustomStyle(
@@ -98,19 +99,24 @@ class BottomPriceContainer extends StatelessWidget {
                         textColor: Colors.grey),
                   ],
                 ),
-                Row(
-                  children: [
-                    TextCustomStyle(
-                      textData: "Book Bow",
-                      textSize: 17.0,
-                      textWeight: FontWeight.bold,
-                      textColor: Colors.amber.shade700,
-                    ),
-                    Icon(
-                      Icons.arrow_right,
-                      color: Colors.amber.shade700,
-                    )
-                  ],
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutScreen()));
+                  },
+                  child: Row(
+                    children: [
+                      TextCustomStyle(
+                        textData: "Book Bow",
+                        textSize: 17.0,
+                        textWeight: FontWeight.bold,
+                        textColor: Colors.amber.shade700,
+                      ),
+                      Icon(
+                        Icons.arrow_right,
+                        color: Colors.amber.shade700,
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

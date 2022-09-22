@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thiranuitest/screens/bookingScreen/booking_screen.dart';
+import 'package:thiranuitest/screens/onBoardScreen/onboard_screen.dart';
 
 
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BookingScreen(),
+      home: OnboardScreen(),
     );
     
   }
