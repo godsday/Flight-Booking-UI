@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:thiranuitest/constants/color_constants.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

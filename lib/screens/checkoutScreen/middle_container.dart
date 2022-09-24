@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/color_constants.dart';
-import '../../widgets/textCustom_widgets.dart';
+import '../../widgets/text_custom_widgets.dart';
 
 class MiddleContainer extends StatelessWidget {
   const MiddleContainer({
@@ -40,12 +40,9 @@ class MiddleContainer extends StatelessWidget {
                   ),
                   height: 30,
                   width: 55,
-                  child: TextCustomStyle(
-                    textData: "\$150",
-                    textSize: 16.0,
-                    textWeight: FontWeight.normal,
-                    textColor: whiteColor,
-                  ),
+                  child: Text("\$150",style: TextStyle(  fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: whiteColor),),
                 ),
               ),
             ],

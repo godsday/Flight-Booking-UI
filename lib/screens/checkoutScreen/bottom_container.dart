@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../constants/color_constants.dart';
-import '../../widgets/textCustom_widgets.dart';
+import '../../widgets/text_custom_widgets.dart';
 
 class BottomContainer extends StatelessWidget {
   const BottomContainer({
@@ -29,10 +31,25 @@ class BottomContainer extends StatelessWidget {
             SizedBox(
                 height: height / 5.5,
                 width: width / 4,
-                child: Image.network(
-                  "https://1000logos.net/wp-content/uploads/2020/03/Emirates-Logo-768x480.png",
-                  scale: 1,
-                )),
+                child:CachedNetworkImage(
+                              imageUrl:                   "https://1000logos.net/wp-content/uploads/2020/03/Emirates-Logo-768x480.png",
+
+                              placeholder: (context, url) => Shimmer.fromColors(
+                                  baseColor: Colors.grey.shade300,
+                                  highlightColor: Colors.white38,
+                                  child: Container(
+                                    width: 20,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+color: Colors.grey.shade100,
+borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    
+                                  )),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            ),
+                 ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

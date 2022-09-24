@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thiranuitest/constants/color_constants.dart';
 import 'package:thiranuitest/screens/flightSearchScreen/flight_search_screen.dart';
 import 'package:thiranuitest/screens/helperWidgets/tabviewCustom.dart';
-import 'package:thiranuitest/widgets/textCustom_widgets.dart';
+import 'package:thiranuitest/widgets/text_custom_widgets.dart';
 import 'bottom_price_container.dart';
 import '../helperWidgets/dropdown_widget.dart';
 
@@ -15,10 +15,10 @@ class BookingScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.blueGrey.shade50,
-      body: SizedBox(
-        width: width,
-        height: height,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: width,
+         height: height,
           child: Column(
             children: [
               Stack(
@@ -31,22 +31,40 @@ class BookingScreen extends StatelessWidget {
                         height: height / 2.4,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/bg.jpg"),
+                                image: AssetImage("assets/images/bb.jpg"),
                                 fit: BoxFit.cover)),
                       ),
+                   
                       const SizedBox(
                         height: 130,
                       )
                     ],
                   ),
-                  const Positioned(
+                     Container(
+                               width: width,
+                        height: height / 2.4,
+                        decoration:  BoxDecoration(
+                         gradient: LinearGradient(colors: [
+                        Colors.teal.shade900,
+                        
+                        Colors.black54
+                        
+                         ],
+                         begin:Alignment.topLeft,
+                         end: Alignment.bottomRight)
+              
+                        )
+              
+                      ),
+              
+                   Positioned(
                     top: 40,
                     left: 25,
                     child: TextCustomStyle(
                       textData: "Let's  Book Your ",
                       textSize: 27.0,
                       textWeight: FontWeight.bold,
-                      textColor: Colors.white,
+                      textColor: whiteColor,
                     ),
                   ),
                   Positioned(
@@ -68,12 +86,12 @@ class BookingScreen extends StatelessWidget {
                     top: 80,
                     left: 25,
                     child: Row(
-                      children: const [
+                      children:  [
                         TextCustomStyle(
                             textData: "Flight",
                             textSize: 27.0,
                             textWeight: FontWeight.bold,
-                            textColor: Colors.white),
+                            textColor: whiteColor),
                       ],
                     ),
                   ),
@@ -97,8 +115,8 @@ class BookingScreen extends StatelessWidget {
                         boxShadow: const [
                           BoxShadow(
                             color: Colors.grey,
-                            blurRadius: 10,
-                            spreadRadius: .5,
+                            blurRadius: 9,
+                            spreadRadius: .1,
                           )
                         ],
                       ),
@@ -132,9 +150,7 @@ class BookingScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+           const  SizedBox(height: 5,),
               const BottomPriceContainer()
             ],
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thiranuitest/widgets/textCustom_widgets.dart';
+import 'package:thiranuitest/widgets/text_custom_widgets.dart';
 
 class MultiCityWidget extends StatelessWidget {
   const MultiCityWidget({Key? key}) : super(key: key);

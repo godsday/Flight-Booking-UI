@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:thiranuitest/constants/color_constants.dart';
-import 'package:thiranuitest/widgets/textCustom_widgets.dart';
+import 'package:thiranuitest/widgets/text_custom_widgets.dart';
 
-import '../../widgets/textfieldCustom_widget.dart';
+import '../../widgets/textfield_custom_widget.dart';
 
 class FlightSearchScreen extends StatelessWidget {
   FlightSearchScreen({Key? key}) : super(key: key);
@@ -61,14 +61,31 @@ class FlightSearchScreen extends StatelessWidget {
                       height: height / 3,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/images/bg.jpg"),
+                              image: AssetImage("assets/images/bb.jpg"),
                               fit: BoxFit.cover)),
                     ),
+                     
                     SizedBox(
                       height: height / 1.51,
                     )
                   ],
                 ),
+               Container(
+                          width: width,
+                          height: height / 3,
+                      decoration:  BoxDecoration(
+                       gradient: LinearGradient(colors: [
+                      Colors.teal.shade900,
+                      
+                      Colors.black54
+                      
+                       ],
+                       begin:Alignment.topLeft,
+                       end: Alignment.bottomRight)
+            
+                      )
+            
+                    ),
                 Positioned(
                   bottom: 5,
                   child: Container(

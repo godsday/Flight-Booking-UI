@@ -35,6 +35,8 @@ class TabBarWidgetState extends State<TabBarWidget>
     return  Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
+         
           shrinkWrap: true,
           children: [
             Container(
@@ -45,7 +47,7 @@ class TabBarWidgetState extends State<TabBarWidget>
                   25.0,
                 ),
               ),
-              child: TabBar(
+              child: TabBar(isScrollable: false,
                 controller: _tabController,
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(

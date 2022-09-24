@@ -1,10 +1,13 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextCustomStyle extends StatelessWidget {
-  final double textSize;
-  final String textData;
+  final double? textSize;
+  final String? textData;
   final Color? textColor;
-  final FontWeight textWeight;
+  final FontWeight? textWeight;
   final String? fontFamily;
   final TextAlign? textAlign;
   final FontStyle? fontStyle;
@@ -12,9 +15,9 @@ class TextCustomStyle extends StatelessWidget {
 
   const TextCustomStyle(
       {Key? key,
-      required this.textData,
-      required this.textSize,
-      required this.textWeight,
+       this.textData,
+       this.textSize,
+       this.textWeight,
       this.fontStyle,
       this.textColor,
       this.fontFamily,
@@ -25,11 +28,11 @@ class TextCustomStyle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       
-      textData,
+      textData!,
       textAlign: textAlign,
-      style: TextStyle(
+      style: GoogleFonts.acme(
         fontStyle: fontStyle,
-          fontSize: textSize, fontWeight: textWeight, color: textColor,fontFamily:fontFamily,),
+          fontSize: textSize, fontWeight: textWeight, color: textColor,),
     );
   }
 }

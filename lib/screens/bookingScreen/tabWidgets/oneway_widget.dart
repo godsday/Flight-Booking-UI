@@ -3,7 +3,7 @@ import 'package:thiranuitest/constants/color_constants.dart';
 import 'package:thiranuitest/screens/flightSearchScreen/flight_search_screen.dart';
 
 import '../../../widgets/custom_animation_route.dart';
-import '../../../widgets/textfieldCustom_widget.dart';
+import '../../../widgets/textfield_custom_widget.dart';
 
 class OneWayWidget extends StatelessWidget {
   OneWayWidget({Key? key}) : super(key: key);

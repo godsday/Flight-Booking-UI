@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thiranuitest/constants/color_constants.dart';
 import 'package:thiranuitest/screens/bookingScreen/booking_screen.dart';
-import 'package:thiranuitest/widgets/buttonCustom_widget.dart';
-import 'package:thiranuitest/widgets/textCustom_widgets.dart';
+import 'package:thiranuitest/widgets/button_custom_widget.dart';
+import 'package:thiranuitest/widgets/text_custom_widgets.dart';
 
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({Key? key}) : super(key: key);
@@ -25,10 +26,11 @@ class OnboardScreen extends StatelessWidget {
           Container(
             width: width,
             height: height,
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
                 gradient: LinearGradient(colors: [
-              Colors.black,
-              Colors.black38,
+              Colors.teal.shade900,
+              //  Colors.indigo.shade800,
+              Colors.black54,
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           ),
 
@@ -49,8 +51,9 @@ class OnboardScreen extends StatelessWidget {
               top: 145,
               left: 20,
               child: TextCustomStyle(
+                textAlign: TextAlign.start,
                 textData:
-                    "Going forward after a pandemic that \n devasated the online industry ",
+                    "Going forward after a pandemic that \nDevasated the online industry ",
                 textSize: 17.0,
                 textWeight: FontWeight.normal,
                 textColor: Colors.grey,
@@ -58,8 +61,8 @@ class OnboardScreen extends StatelessWidget {
           Positioned(
               top: 245,
               left: 20,
-              child: CustomButton(
-                text: "Get Tickets",
+              child: CustomButton(textstyle: TextCustomStyle(textData: "Get Tickets",textColor: blackColor,textSize: 19,textWeight: FontWeight.bold),
+              
                 pressed: () {
                   Navigator.pushReplacement(
                       context,
