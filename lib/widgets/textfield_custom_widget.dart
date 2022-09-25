@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
       width: 330,
       child: TextField(
           controller: _fromController,
-          decoration: InputDecoration(
+          decoration: InputDecoration(disabledBorder: InputBorder.none,
               hintText: hinttext,filled:true,fillColor:fillcolor,
               hintStyle: TextStyle(color: hinttextcolor),
               prefixIcon: Icon(prefixicon,color:iconColor ,), 

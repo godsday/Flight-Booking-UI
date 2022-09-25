@@ -1,11 +1,51 @@
-import 'package:flutter/material.dart';
-import 'package:thiranuitest/constants/color_constants.dart';
-import 'package:thiranuitest/screens/bookingScreen/booking_screen.dart';
-import 'package:thiranuitest/widgets/button_custom_widget.dart';
-import 'package:thiranuitest/widgets/text_custom_widgets.dart';
+import 'dart:math';
 
-class OnboardScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:thiranuitest/widgets/text_custom_widgets.dart';
+import '../../model/liquid_swipe.dart';
+
+class OnboardScreen extends StatefulWidget {
   const OnboardScreen({Key? key}) : super(key: key);
+
+  @override
+  State<OnboardScreen> createState() => _OnboardScreenState();
+}
+
+class _OnboardScreenState extends State<OnboardScreen> {
+  int page = 0;
+  late LiquidController liquidController;
+  late UpdateType updateType;
+  @override
+  void initState() {
+    liquidController = LiquidController();
+    super.initState();
+  }
+
+  Widget buildDot(int index) {
+    double selectedness = Curves.easeOut.transform(
+      max(
+        0.0,
+        1.0 - ((page) - index).abs(),
+      ),
+    );
+    double zoom = 1.0 + (2.0 - 1.0) * selectedness;
+    return SizedBox(
+      width: 25.0,
+      child: Center(
+        child: Material(
+          color: Colors.white,
+          type: MaterialType.circle,
+          child: SizedBox(
+            width: 8.0 * zoom,
+            height: 8.0 * zoom,
+          ),
+        ),
+      ),
+    );
+  }
+
+  gotobooking(context) async {}
 
   @override
   Widget build(BuildContext context) {
@@ -13,68 +53,74 @@ class OnboardScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            width: width,
-            height: height,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/bb.jpg"),
-                    fit: BoxFit.cover)),
-          ),
-          Container(
-            width: width,
-            height: height,
-            decoration:  BoxDecoration(
-                gradient: LinearGradient(colors: [
-              Colors.teal.shade900,
-              //  Colors.indigo.shade800,
-              Colors.black54,
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-          ),
+        body: LiquidSwipe.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return Stack(
+          children: <Widget>[
+            Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(data[index].image), fit: BoxFit.cover)),
+            ),
 
-          // const Positioned(
-          //   bottom:20,
-          //   left: 40,
-          //   child: Image(image: AssetImage("assets/images/trvel 1.png"))),
-          const Positioned(
-              top: 45,
-              left: 20,
-              child: TextCustomStyle(
-                textData: "Find And Book\nA Great Experience",
-                textSize: 33.0,
-                textWeight: FontWeight.bold,
-                textColor: Colors.white,
-              )),
-          const Positioned(
-              top: 145,
-              left: 20,
-              child: TextCustomStyle(
-                textAlign: TextAlign.start,
-                textData:
-                    "Going forward after a pandemic that \nDevasated the online industry ",
-                textSize: 17.0,
-                textWeight: FontWeight.normal,
-                textColor: Colors.grey,
-              )),
-          Positioned(
-              top: 245,
-              left: 20,
-              child: CustomButton(textstyle: TextCustomStyle(textData: "Get Tickets",textColor: blackColor,textSize: 19,textWeight: FontWeight.bold),
-              
-                pressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const BookingScreen()));
-                },
-                width: 140,
-                height: 50,
-                color: Colors.orange,
-              ))
-        ],
-      ),
-    );
+            Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                data[index].color,
+                //  Colors.indigo.shade800,
+                Colors.black54,
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+            ),
+
+           
+            Positioned(
+                top: 75,
+                left: 20,
+                child: TextCustomStyle(
+                  spaceheight: 2,
+                  textData: data[index].headLine,
+                  textSize: 37.0,
+                  textWeight: FontWeight.bold,
+                  textColor: Colors.white,
+                )),
+            Positioned(
+                top: 235,
+                left: 20,
+                child: TextCustomStyle(
+                  textAlign: TextAlign.start,
+                  textData: data[index].text ?? "",
+                  textSize: 18.0,
+                  textWeight: FontWeight.normal,
+                  textColor: Colors.grey,
+                )),
+            Positioned(
+                top: 545,
+                right: 20,
+                child: data[index].button ?? const SizedBox())
+          ],
+        );
+      },
+      positionSlideIcon: 0.8,
+      slideIconWidget:
+          page != 2 ? const Icon(Icons.arrow_back_ios) : const SizedBox(),
+      onPageChangeCallback: pageChangeCallback,
+      waveType: WaveType.liquidReveal,
+      liquidController: liquidController,
+      fullTransitionValue: 880,
+      enableSideReveal: true,
+      enableLoop: false,
+      ignoreUserGestureWhileAnimating: false,
+    ));
+  }
+
+  pageChangeCallback(int lpage) {
+    setState(() {
+      page = lpage;
+    });
   }
 }

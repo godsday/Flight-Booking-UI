@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:thiranuitest/screens/onBoardScreen/onboard_screen.dart';
+import 'package:thiranuitest/screens/splashScreen/splash_screen.dart';
+import 'model/liquid_swipe.dart';
 
-
-
-void main(){
+void main() {
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: GlobalContextService.navigatorKey,
       theme: ThemeData(primarySwatch: Colors.cyan),
       debugShowCheckedModeBanner: false,
-
-      home: const OnboardScreen(),
+      home:const SplashScreen(),
     );
-    
   }
 }
+
+
+
+
+
