@@ -26,9 +26,11 @@ class TextCustomStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      
       textData!,
       textAlign: textAlign,
       style: GoogleFonts.acme(
+        
         height: spaceheight,
         fontStyle: fontStyle,
         fontSize: textSize,

@@ -20,15 +20,18 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final _razorpay = Razorpay();
+   bool visible = false;
+   int cindex = 0;
 
-  List paymenticons = [
-    "https://mpng.subpng.com/20180802/xri/kisspng-logo-mastercard-vector-graphics-font-visa-mastercard-logo-png-photo-png-arts-5b634298cd58d5.9008352515332317688411.jpg",
-    "https://logos-download.com/wp-content/uploads/2016/03/PayPal_Logo_2014-1536x1520.png",
-    "https://i.pinimg.com/564x/f6/60/a6/f660a637c5ea8ef2b00218bac3479c82.jpg",
-    "https://www.ebuyer.com/blog/wp-content/uploads/2013/11/bitcoin-logo-1000_0.jpg",
+  List<dynamic> paymenticons = [
+{ "image":"https://mpng.subpng.com/20180802/xri/kisspng-logo-mastercard-vector-graphics-font-visa-mastercard-logo-png-photo-png-arts-5b634298cd58d5.9008352515332317688411.jpg","index":0,
+},    {"image":"https://logos-download.com/wp-content/uploads/2016/03/PayPal_Logo_2014-1536x1520.png","index":1},
+   {"image": "https://i.pinimg.com/564x/f6/60/a6/f660a637c5ea8ef2b00218bac3479c82.jpg","index":2},
+   { "image":"https://www.ebuyer.com/blog/wp-content/uploads/2013/11/bitcoin-logo-1000_0.jpg","index":3}
   ];
   @override
   void initState() {
+    
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
@@ -36,15 +39,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     super.initState();
   }
 
-  void _handlePaymentSuccess(PaymentSuccessResponse response)async {
-    gotoHome();
-   await Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>const BookingScreen()), (route) => false);
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+  
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentStatus(text: "Ticket Booked", icon: Icons.verified, color: Colors.green.shade800,child:const BookingScreen(),)), (route) => false);
   }
 
-  void _handlePaymentError(PaymentFailureResponse response) async {
-    gotoHome();
-   await Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => CheckoutScreen()));
+  void _handlePaymentError(PaymentFailureResponse response)  {
+       Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => PaymentStatus(text: "Oops\nSomething went wrong", icon: Icons.error, color: Colors.red, child: CheckoutScreen())));
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -58,15 +60,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     super.dispose();
   }
 
-  // createOrder(){
-  //   String key = "rzp_test_WNox17kjHIMdWn";
-  //   String serect ="DIJ2vUeqLEFMEZjObklj";
-
-  // }
+ 
   var options = {
     'key': "rzp_test_WNox17kjHIMdWn",
-    'amount': 5000, //in the smallest currency sub-unit.
-    'name': 'FLEW',
+    'amount': 45000, //in the smallest currency sub-unit.
+    'name': 'HiFly',
     'description': 'to New York',
     'timeout': 60, // in seconds
     'prefill': {'contact': '8086617703', 'email': 'rafikkvavoor@gmail.com'},
@@ -87,6 +85,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -119,33 +118,68 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   color: Colors.white70,
                 ),
                 child: ListView.builder(
+                  physics:const NeverScrollableScrollPhysics(),
                     itemCount: 4,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            width: width / 5,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: whiteColor),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CachedNetworkImage(
-                                imageUrl: paymenticons[index],
-                                placeholder: (context, url) =>
-                                    Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.white38,
-                                        child: Container(
-                                          width: 20,
-                                          height: 20,
-                                          decoration: BoxDecoration(
-                                              color: Colors.grey.shade100,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                        )),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
+                          child: GestureDetector(
+                            onTap:() {
+                           
+                            
+                            setState(() {
+                              cindex=paymenticons[index]['index'];
+                            });
+                             if(cindex ==paymenticons[index]["index"]){
+                              setState(() {
+                                 visible=true;
+                              });
+                              
+                             }else{
+                              setState(() {
+                                visible=false;
+                                
+                              });
+                           
+                             }
+                            },
+                            child: Container(
+                              width: width / 5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: whiteColor),
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                
+                                children: [
+                                
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: CachedNetworkImage(
+                                      imageUrl: paymenticons[index]["image"],
+                                      placeholder: (context, url) =>
+                                          Shimmer.fromColors(
+                                              baseColor: Colors.grey.shade300,
+                                              highlightColor: Colors.white38,
+                                              child: Container(
+                                                width: 20,
+                                                height: 20,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey.shade100,
+                                                    borderRadius:
+                                                        BorderRadius.circular(10)),
+                                              )),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                  ),
+                                    Visibility(
+                                      visible:cindex==paymenticons[index]["index"]?true:false,
+                                      child: Positioned(
+                                        right: 1,
+                                        child: Icon(Icons.verified_outlined,size: 17,color: Colors.amber.shade800,)),
+                                    ),
+                                ],
                               ),
                             ),
                           ),
@@ -195,7 +229,5 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-  Future gotoHome() async {
-    await Future.delayed(const Duration(seconds: 5000));
-  }
+
 }

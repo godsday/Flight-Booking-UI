@@ -63,7 +63,7 @@ borderRadius: BorderRadius.circular(10)
                   textData: "12:30 Am",
                   textSize: 22.0,
                   textWeight: FontWeight.bold,
-                  textColor: Colors.blue.shade300,
+                  textColor: Colors.teal.shade900,
                 ),
                 const SizedBox(
                   height: 20,
@@ -74,11 +74,11 @@ borderRadius: BorderRadius.circular(10)
                   textWeight: FontWeight.normal,
                   textColor: Colors.grey,
                 ),
-                const TextCustomStyle(
-                  textData: "03:00 Am",
+                 TextCustomStyle(
+                  textData: "06:00 Am",
                   textSize: 22.0,
                   textWeight: FontWeight.bold,
-                  textColor: Colors.green,
+                  textColor: Colors.blue.shade900,
                 ),
               ],
             ),
@@ -92,7 +92,7 @@ borderRadius: BorderRadius.circular(10)
                   textColor: Colors.grey,
                 ),
                 TextCustomStyle(
-                  textData: "01:00 Am",
+                  textData: "05:00 Am",
                   textSize: 22.0,
                   textWeight: FontWeight.bold,
                   textColor: blackColor,
@@ -106,12 +106,10 @@ borderRadius: BorderRadius.circular(10)
                   textWeight: FontWeight.normal,
                   textColor: Colors.grey,
                 ),
-                TextCustomStyle(
-                  textData: "\$450",
-                  textSize: 22.0,
-                  textWeight: FontWeight.bold,
-                  textColor: Colors.amber.shade700,
-                ),
+               
+                Text("\$450",style: TextStyle(  fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amber.shade900))
               ],
             )
           ],

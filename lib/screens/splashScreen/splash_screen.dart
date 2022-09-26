@@ -30,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: TextLiquidFill(
               text: 'HiFly',
               waveColor: Colors.amber,
+              waveDuration: const Duration(milliseconds: 1000),
               loadDuration: const Duration(seconds: 5),
               loadUntil: 0.6,
               boxBackgroundColor: blackColor,
@@ -42,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future gotoOnboard() async {
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 6));
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (context) => const OnboardScreen()));
   }

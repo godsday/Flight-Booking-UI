@@ -13,14 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: GlobalContextService.navigatorKey,
-      theme: ThemeData(primarySwatch: Colors.cyan),
+      theme: ThemeData(primarySwatch: Colors.teal),
       debugShowCheckedModeBanner: false,
-      home:const SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
-
-
-
-
-

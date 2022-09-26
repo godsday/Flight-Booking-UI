@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thiranuitest/constants/color_constants.dart';
 import 'package:thiranuitest/screens/flightSearchScreen/flight_search_screen.dart';
-import 'package:thiranuitest/screens/helperWidgets/tabviewCustom.dart';
+import 'package:thiranuitest/screens/helperWidgets/tabview_custom.dart';
 import 'package:thiranuitest/widgets/text_custom_widgets.dart';
 import 'bottom_price_container.dart';
 import '../helperWidgets/dropdown_widget.dart';
