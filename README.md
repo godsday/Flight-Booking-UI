@@ -1,16 +1,24 @@
-# thiranuitest
+# HiFly
 
-A new Flutter project.
+## Flight-Ticket-Booking-App - UI
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Hifly Users can experience animation effects throughout the app. The payment methods are as easy and convenient as possible by using Razorpay Payment Gateway.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Packeges
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Razorpay Flutter
+#### Animated Tool Kit
+#### Liquid SWipe flutter
+#### Cached Network Image
+
+## Screenshot
+
+![](screenshots/1.png)
+![](screenshots/2.png)
+![](screenshots/3.png)
+
+
+![](screenshots/4.png)
+![](screenshots/5.png)
